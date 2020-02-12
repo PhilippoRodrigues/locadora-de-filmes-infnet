@@ -15,7 +15,7 @@
               img-src="https://modomeu.com/wp-content/uploads/2019/03/Capit%C3%A3-Marvel-ModoMeu-1024x576.jpeg"
               img-top
               tag="article"
-              style="max-width: 20rem;"
+              style="max-width: 16rem;"
               class="mb-3"
             >
               <b-card-text class="center">
@@ -46,7 +46,8 @@ export default {
        { id: 2, titulo: "Pantera Negra", descricao: "Um filme de panteras", valor: 35, imagem: "assets/logo.png" },
        { id: 3, titulo: "Homem-Formiga", descricao: "Um filme de formigas", valor: 20, imagem: "assets/logo.png" },
        { id: 4, titulo: "Capitã Marvel", descricao: "Um filme de capitãs", valor: 40, imagem: "assets/logo.png" },
-       { id: 5, titulo: "Hulk", descricao: "Um filme de força", valor: 10, imagem: "assets/logo.png" }
+       { id: 5, titulo: "Hulk", descricao: "Um filme de força", valor: 10, imagem: "assets/logo.png" },
+      { id: 6, titulo: "Hulk", descricao: "Um filme de força", valor: 10, imagem: "assets/logo.png" }
      ]
     }
   }
