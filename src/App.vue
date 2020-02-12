@@ -56,7 +56,7 @@ export default {
 <style>
 #app{
   margin: 40px;
-  font-family: 'Marvel', sans-serif;
+  font-family: 'Inconsolata', monospace;
 }
 .cards{
   justify-content: space-between;
