@@ -29,10 +29,13 @@
           <b-card-text>
             {{ filme.descricao }}    
           </b-card-text>
+        
 
           <b-card-text>
             {{ filme.valor | formatarPreco("R$") }}    
           </b-card-text>
+
+          <b-button variant="danger" @click="removeFilmeLista(filme.id)">Remover</b-button>
           <b-button href="#" @click="adicionarAoCarrinho(filme)"   v-if="validarPermissaoParaAdicionarNoCarrinho(filme)" variant="dark">Alugar</b-button>
 
           <b-button href="#"  v-else variant="dark" disabled> Alugar</b-button>
@@ -65,16 +68,14 @@ export default {
    }
  },
   methods: {
+    removeFilmeLista: function(id){
+      this.filmes_obj = this.filmes_obj.filter(elem => elem.id != id)
+      return this.filmes_obj
+    },
     adicionarAoCarrinho: function(filme) {
       this.carrinho.push(filme.id);
     },quantidadeNoCarrinhoPorFilme: function(filme) {
-      var quantidade = 0;
-      for (var i = 0; i < this.carrinho.length; i++) {
-       if (filme.id == this.carrinho[i]) {
-         quantidade++;
-       }
-     }
-     return quantidade;
+      return this.carrinho.filter(elem => elem === filme.id).length;
    },
    validarPermissaoParaAdicionarNoCarrinho: function(filme) {
      return filme.estoqueDisponivel > this.quantidadeNoCarrinhoPorFilme(filme);
