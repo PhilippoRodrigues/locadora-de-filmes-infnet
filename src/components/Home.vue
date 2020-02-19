@@ -9,12 +9,12 @@
       <h3 v-else id="fechada">FECHADA</h3>
     </b-row>-->
     <b-row>
-       <button type="button" class="btn btn-dark">
+       <button type="button" class="btn btn-dark"  v-on:click="mostrarCarrinho">
          Carrinho: {{ quantidadeNoCarrinho }} filmes
        </button>
     </b-row>
 
-    <b-row>
+    <b-row  v-if="mostrarFilmes">
       <div class="cards">
         <b-card  :key="filme.id" v-for="filme in filmes_obj"
           :title="filme.titulo"
@@ -42,6 +42,9 @@
         </b-card>
       </div>
     </b-row>
+    <b-row v-else>
+      <h2>Carrinho</h2>
+    </b-row>
   </div>
 </template>
 
@@ -51,6 +54,7 @@ export default {
   props: { },
   data: function() {
    return {
+     mostrarFilmes: true,
      carrinho: [],
      title: "Locadora de Filmes",
      horas: new Date().getHours(),
@@ -67,7 +71,10 @@ export default {
      filmes: ['Vingadores', 'Homem de Ferro', 'Hulk', 'Pantera negra']
    }
  },
-  methods: {
+  methods: { 
+    mostrarCarrinho() {
+      this.mostrarFilmes = this.mostrarFilmes ? false : true;
+    },
     removeFilmeLista: function(id){
       this.filmes_obj = this.filmes_obj.filter(elem => elem.id != id)
       return this.filmes_obj
