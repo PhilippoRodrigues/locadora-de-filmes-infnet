@@ -1,19 +1,19 @@
 <template>
   <div class="home">
     <b-row>
-      <h1>Bem vindo a {{ title }}</h1>
+      <h1>Bem vinda a {{ title }}</h1>
     </b-row>
     <!--<b-row>
       <h3 v-if="horas >= 7 && horas < 17" id="aberta">ABERTA</h3>
       <h3 v-else-if="horas >= 17 && horas < 18" id="proxima-fechar">PRÓXIMA DE FECHAR</h3>
       <h3 v-else id="fechada">FECHADA</h3>
     </b-row>-->
-
     <b-row>
-      <ul>
-        <li v-for="filme in filmes" v-bind:key="filme">{{ filme }}</li>
-      </ul>
+       <button type="button" class="btn btn-dark">
+         Carrinho: {{ quantidadeNoCarrinho }} filmes
+       </button>
     </b-row>
+
     <b-row>
       <div class="cards">
         <b-card  :key="filme.id" v-for="filme in filmes_obj"
@@ -31,9 +31,9 @@
           </b-card-text>
 
           <b-card-text>
-            {{ filme.valor | formatarPreco("R$")}}    
+            {{ filme.valor | formatarPreco("R$") }}    
           </b-card-text>
-          <b-button href="#" variant="primary">Alugar</b-button>
+          <b-button href="#" @click="adicionarAoCarrinho(filme)" variant="dark">Alugar</b-button>
         </b-card>
       </div>
     </b-row>
@@ -46,6 +46,7 @@ export default {
   props: { },
   data: function() {
    return {
+     carrinho: [],
      title: "Locadora de Filmes",
      horas: new Date().getHours(),
      filmes_obj: [
@@ -59,7 +60,17 @@ export default {
      ],
      filmes: ['Vingadores', 'Homem de Ferro', 'Hulk', 'Pantera negra']
    }
- }
+ },
+  methods: {
+    adicionarAoCarrinho: function(filme) {
+      this.carrinho.push(filme.id);
+    }
+  },
+  computed: {
+    quantidadeNoCarrinho: function() {
+      return this.carrinho.length;
+    }
+  }
 }
 </script>
 
