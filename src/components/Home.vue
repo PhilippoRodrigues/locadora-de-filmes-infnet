@@ -16,7 +16,7 @@
 
     <b-row  v-if="mostrarFilmes">
       <div class="cards">
-        <b-card  :key="filme.id" v-for="filme in filmes_obj"
+        <b-card  :key="filme.id" v-for="filme in filmesOrdenados"
           :title="filme.titulo"
           :id="filme.id"
           :img-src="filme.imagem"
@@ -96,7 +96,20 @@ export default {
   computed: {
     quantidadeNoCarrinho: function() {
       return this.carrinho.length;
-    }
+    },
+    filmesOrdenados: function(){
+      let filmesOrd = this.filmes_obj
+      filmesOrd.sort(function (a, b) {
+        if (a.titulo > b.titulo) {
+          return 1;
+        }
+        if (a.titulo < b.titulo) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });
+      return this.filmes_obj    }
   }
 }
 </script>

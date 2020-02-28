@@ -112,7 +112,7 @@
          </div>
          
          <div class="form-group">
-           <button type="submit" class="btn btn-primary" v-on:click="submitFormulario">
+           <button type="submit" class="btn btn-dark btn-lg btn-block" v-on:click="submitFormulario">
              Finalizar pedido
            </button>
          </div>
