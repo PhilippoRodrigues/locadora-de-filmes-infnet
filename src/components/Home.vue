@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <b-row>
+    <b-row v-if="mostrarFilmes">
       <h1>Bem vinda a {{ title }}</h1>
     </b-row>
     <!--<b-row>
@@ -8,8 +8,8 @@
       <h3 v-else-if="horas >= 17 && horas < 18" id="proxima-fechar">PRÓXIMA DE FECHAR</h3>
       <h3 v-else id="fechada">FECHADA</h3>
     </b-row>-->
-    <b-row>
-       <button type="button" class="btn btn-dark"  v-on:click="mostrarCarrinho">
+    <b-row v-if="mostrarFilmes">
+       <button type="button" class="btn btn-dark"     v-on:click="mostrarCarrinho">
          Carrinho: {{ quantidadeNoCarrinho }} filmes
        </button>
     </b-row>
@@ -35,7 +35,7 @@
             {{ filme.valor | formatarPreco("R$") }}    
           </b-card-text>
 
-          <b-button variant="danger" @click="removeFilmeLista(filme.id)">Remover</b-button>
+          <!--<b-button variant="danger" @click="removeFilmeLista(filme.id)">Remover</b-button>-->
           <b-button href="#" @click="adicionarAoCarrinho(filme)"   v-if="validarPermissaoParaAdicionarNoCarrinho(filme)" variant="dark">Alugar</b-button>
 
           <b-button href="#"  v-else variant="dark" disabled> Alugar</b-button>
@@ -43,15 +43,20 @@
       </div>
     </b-row>
     <b-row v-else>
-      <h2>Carrinho</h2>
+      <Carrinho />
     </b-row>
   </div>
 </template>
 
 <script>
+
+
+import Carrinho from './Carrinho.vue'
+
 export default {
   name: 'Home',
   props: { },
+  components: {Carrinho}, 
   data: function() {
    return {
      mostrarFilmes: true,
