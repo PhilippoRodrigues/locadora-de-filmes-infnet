@@ -90,6 +90,7 @@ export default {
  },
   methods: { 
     filtra5estrelas(){
+      this.filmes_obj = this.filmes_obj.filter(elem => elem.avaliacao === 5)
       return this.filmes_obj
     },
     mostrarCarrinho() {
