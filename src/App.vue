@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Header />
     <b-container>
        <Home/>
     </b-container>
@@ -9,17 +10,18 @@
 <script>
 
 import Home from './components/Home.vue'
+
+import Header from './components/Header.vue'
 export default {
 
   name: 'App',
-  components: {Home}, 
+  components: {Home, Header}, 
 
 }
 </script>
 
 <style>
 #app{
-  margin: 40px;
   font-family: 'Inconsolata', monospace;
 }
 .cards{

@@ -51,8 +51,8 @@
             <select class="form-control" id="estado" v-model="pedido.estado">
               <option disabled value>Escolha um estado</option>
               <option
-                v-for="(estado, key) in estados"
-                v-bind:value="estado"
+                v-for="(a, key) in estados"
+                v-bind:value="a"
                 v-bind:key="key">
                 {{ key }}
               </option>
@@ -169,5 +169,7 @@ export default {
 </script>
 
 <style>
-
+.carrinho{
+  margin: 24px;
+}
 </style>
