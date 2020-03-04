@@ -8,18 +8,18 @@
       <h3 v-else-if="horas >= 17 && horas < 18" id="proxima-fechar">PRÓXIMA DE FECHAR</h3>
       <h3 v-else id="fechada">FECHADA</h3>
     </b-row>-->
-    <b-row v-if="mostrarFilmes">
+    <b-row>
        <button type="button" class="btn btn-dark"     v-on:click="mostrarCarrinho">
          Carrinho: {{ quantidadeNoCarrinho }} filmes
        </button>
     </b-row>
 
-<b-row v-if="mostrarFilmes">
+<b-row>
        <button type="button" class="btn btn-warning"     v-on:click="filtra5estrelas">
          Filtra 5 estrelas
        </button>
     </b-row>
-    <b-row  v-if="mostrarFilmes">
+    <b-row >
       <div class="cards">
         <b-card  :key="filme.id" v-for="filme in filmesOrdenados"
           :title="filme.titulo"
@@ -54,21 +54,17 @@
         </b-card>
       </div>
     </b-row>
-    <b-row v-else>
-      <Carrinho />
-    </b-row>
+   
   </div>
 </template>
 
 <script>
 
 
-import Carrinho from './Carrinho.vue'
 
 export default {
   name: 'Home',
   props: { },
-  components: {Carrinho}, 
   data: function() {
    return {
      mostrarFilmes: true,
@@ -94,7 +90,7 @@ export default {
       return this.filmes_obj
     },
     mostrarCarrinho() {
-      this.mostrarFilmes = this.mostrarFilmes ? false : true;
+      this.$router.push({name : "form"})
     },
     removeFilmeLista: function(id){
       this.filmes_obj = this.filmes_obj.filter(elem => elem.id != id)
