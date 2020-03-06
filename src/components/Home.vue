@@ -32,7 +32,12 @@
           class="mb-2"
         >
           <b-card-text>
-            {{ filme.descricao }}    
+            <router-link
+           tag="h5"
+           class="card-title"
+           :to="{ name: 'filme', params: { id: filme.id } }"
+         >{{ filme.descricao }}</router-link>
+
           </b-card-text>
         
 

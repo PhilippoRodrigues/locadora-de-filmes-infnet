@@ -1,7 +1,13 @@
 <template>
   <div id="header" href="#">
          <b-navbar toggleable="lg" type="dark" variant="dark">
-    <b-navbar-brand >Locadora de Filmes</b-navbar-brand>
+    <router-link
+           tag="h5"
+           class="card-title"
+           :to="{ name: 'home' }"
+         ><b-navbar-brand >Locadora de Filmes</b-navbar-brand>
+         </router-link>
+    
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
