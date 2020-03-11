@@ -30,6 +30,7 @@
           tag="article"
           style="width: 14rem"
           class="mb-2"
+          
         >
           <b-card-text>
             <router-link

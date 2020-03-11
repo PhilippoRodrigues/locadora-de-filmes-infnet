@@ -2,10 +2,11 @@
   <div id="filme-id">
       <h1> Filme</h1>
       <b-row align-v="center">
-        <b-col cols=4>
-                  <b-img :src=filme.imagem fluid alt="Foto"></b-img>
+        <b-col cols=6 sm class="detail">
+                  <b-img :src=filme.imagem fluid alt="Foto" 
+                  style="min-width: 300px;;max-width: 450px"></b-img>
         </b-col>
-        <b-col cols=8>
+        <b-col cols=6 sm class="detail">
             <b-card :title=filme.titulo :sub-title=filme.descricao>
                 <b-card-text>
                     id:  {{ $route.params.id}}
@@ -13,13 +14,14 @@
 
                 <b-card-text>Título : {{ filme.titulo}}</b-card-text>
                 <b-card-text>Descrição : {{ filme.descricao}}</b-card-text>
-                <b-card-text>Valor : {{ filme.valor}}</b-card-text>
+                <b-card-text>Valor : {{ filme.valor |  formatarPreco("R$")}}</b-card-text>
                 <b-card-text>Estoque Disponível : {{ filme.estoqueDisponivel}}</b-card-text>
+                <b-button @click="editar">Editar Filme</b-button>
 
             </b-card>
         </b-col>
     </b-row>
-      
+    <router-view></router-view>
   </div>
 </template>
 
@@ -42,13 +44,21 @@ export default {
   },
   computed:{
       filme: function(){
-          return this.filmes_obj[this.$route.params.id -1]
+          let filme = this.filmes_obj.filter(elem => elem.id == this.$route.params.id)
+          return filme[0]
       }
+  },
+  methods: {
+    editar() {
+      this.$router.push({ name: 'editar-filme' });
+    }
   }
 
 }
 </script>
 
 <style>
-
+.detail{
+    min-width: fit-content;
+}
 </style>
